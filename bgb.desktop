@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=bgb
+GenericName=BGB Game Boy Emulator
+Comment=BGB Game Boy Emulator
+Exec=wine /opt/bgb/bgb.exe %f
+Categories=Game;Emulator;
+Keywords=emulator;Nintendo;gameboy;Game Boy;Game Boy Color;
+MimeType=application/x-gameboy-rom;application/x-dmg-rom;application/x-agb-rom;application/x-gb-rom;
