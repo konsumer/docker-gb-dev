@@ -32,9 +32,9 @@ ADD novnc.html /opt/novnc/index.html
 RUN git clone https://github.com/rednex/rgbds.git /opt/rgbds && cd /opt/rgbds && make && make install
 
 RUN mkdir /opt/gbdk /opt/gbtd /opt/gbmb /opt/bgb && \
-  cd /opt/gbdk && wget https://github.com/andreasjhkarlsson/gbdk-n/files/1677076/gbdevelopmentkit.zip && gbdevelopmentkit.zip && rm gbdevelopmentkit.zip \
-  cd /opt/gbtd && wget http://www.devrs.com/gb/hmgd/gbtd22.zip && unzip gbtd22.zip && rm gbtd22.zip \
-  cd /opt/gbmb && wget http://www.devrs.com/gb/hmgd/gbmb18.zip && unzip gbmb18.zip && rm gbmb18.zip \
+  cd /opt/gbdk && wget https://github.com/andreasjhkarlsson/gbdk-n/files/1677076/gbdevelopmentkit.zip && unzip gbdevelopmentkit.zip && rm gbdevelopmentkit.zip && \
+  cd /opt/gbtd && wget http://www.devrs.com/gb/hmgd/gbtd22.zip && unzip gbtd22.zip && rm gbtd22.zip && \
+  cd /opt/gbmb && wget http://www.devrs.com/gb/hmgd/gbmb18.zip && unzip gbmb18.zip && rm gbmb18.zip && \
   cd /opt/bgb && wget http://bgb.bircd.org/bgb.zip && unzip bgb.zip && rm bgb.zip
 
 # TODO install js/wasm-based tools?
