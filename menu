@@ -1,0 +1,8 @@
+[begin] (Gameboy Development)
+[exec] (Terminal) {xterm -bg black -fg white}
+[exec] (Gameboy Tile Designer) {wine /opt/gbtd/GBTD.EXE}
+[exec] (Gameboy Map Builder) {wine /opt/gbmb/GBMB.EXE}
+[exec] (Gameboy Emulator - BGB) {wine /opt/bgb/bgb.exe}
+[exec] (OpenMPT Music Editor) {wine /opt/openmpt/mptrack.exe}
+[exec] (Help) {zenity --text-info --title='Gameboy Developer' --html --filename=/opt/help.html}
+[end]

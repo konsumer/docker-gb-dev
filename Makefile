@@ -3,7 +3,7 @@ build:
 
 run:
 	mkdir -p work
-	docker run --rm -it -p 8080:8080 -v "${PWD}/work:/root" gb
+	docker run --name='gb' --rm -it -p 8080:8080 -v "${PWD}/work:/home/gbdev" gb
 
 publish:
 	docker tag gb konsumer/gb:latest
