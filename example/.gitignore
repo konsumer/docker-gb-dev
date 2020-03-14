@@ -1,0 +1,11 @@
+.DS_Store
+
+*.rel
+*.ihx
+*.gb
+*.asm
+*.lk
+*.lst
+*.noi
+*.sym
+*.map
