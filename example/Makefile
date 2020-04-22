@@ -1,10 +1,12 @@
 BIN=/opt/gbdk/bin
+RGBASM=/opt/rgbds/rgbasm
 OBJ=./obj
 
 build:
 	mkdir -p $(OBJ)
 	$(BIN)/gbdk-n-compile.sh demo.c -o $(OBJ)/demo.rel
-	$(BIN)/gbdk-n-link.sh $(OBJ)/demo.rel -o $(OBJ)/demo.ihx
+	$(RGBASM) debug.asm -o $(OBJ)/debug.o
+	$(BIN)/gbdk-n-link.sh $(OBJ)/demo.rel $(OBJ)/debug.o -o $(OBJ)/demo.ihx
 	$(BIN)/gbdk-n-make-rom.sh $(OBJ)/demo.ihx demo.gb
 
 clean:

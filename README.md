@@ -63,6 +63,6 @@ export RGBDS_DIR=/opt/rgbds
 
 ## TODO
 
-* add BGB/no$gmb rgbds debug snippet to makefile
+* add [BGB/no$gmb rgbds debug snippet](https://arvid.io/2016/03/12/debug-messages-in-no-gmb-and-bgb/) to makefile
 * make demo project
 * make a tutorial with demo project
