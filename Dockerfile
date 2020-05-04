@@ -5,6 +5,7 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV LC_ALL C.UTF-8
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
+ENV SDCCDIR=/usr
 
 RUN dpkg --add-architecture i386 && \
   apt-get update && apt-get -y install gnupg2 wget && \
@@ -20,12 +21,14 @@ RUN dpkg --add-architecture i386 && \
   wget -O - https://github.com/novnc/noVNC/archive/v1.1.0.tar.gz | tar -xzv -C /opt/ && mv /opt/noVNC-1.1.0 /opt/novnc && \
   wget -O - https://github.com/novnc/websockify/archive/v0.9.0.tar.gz | tar -xzv -C /opt/ && mv /opt/websockify-0.9.0 /opt/novnc/utils/websockify && \
   git clone https://github.com/rednex/rgbds.git /opt/rgbds && cd /opt/rgbds && make && make install && \
-  git clone https://github.com/andreasjhkarlsson/gbdk-n.git /opt/gbdk && cd /opt/gbdk && make && \
   mkdir /opt/gbtd /opt/gbmb /opt/bgb && \
   cd /opt/gbtd && wget http://www.devrs.com/gb/hmgd/gbtd22.zip && unzip gbtd22.zip && rm gbtd22.zip && \
   cd /opt/gbmb && wget http://www.devrs.com/gb/hmgd/gbmb18.zip && unzip gbmb18.zip && rm gbmb18.zip && \
   cd /opt/bgb && wget http://bgb.bircd.org/bgb.zip && unzip bgb.zip && rm bgb.zip && \
   cd  && git clone https://github.com/chrisantonellis/gbtdg.git /opt/novnc/gbtdg
+
+# this currently copies all of /usr/bin, ala https://github.com/Zal0/gbdk-2020/issues/10
+# git clone https://github.com/Zal0/gbdk-2020.git /opt/gbdk && cd /opt/gbdk && make && make install
 
 # TODO install js/wasm-based tools?
 

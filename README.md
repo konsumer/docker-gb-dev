@@ -48,9 +48,20 @@ wine /opt/bgb/bgb.exe demo.gb
 docker kill gb
 ```
 
+## more info
+
+Here are the tools installed in your environment:
+
+- [gbdk-2020](https://github.com/Zal0/gbdk-2020)
+- [rgbds](https://github.com/rednex/rgbds)
+- [gameboy tile designer](http://www.devrs.com/gb/hmgd/gbtd.html) (via wine)
+- [gameboy map builder](http://www.devrs.com/gb/hmgd/gbmb.html) (via wine)
+- [bgb gameboy emulator](https://bgb.bircd.org/) (via wine)
+- [gameboy tile data generator](https://github.com/chrisantonellis/gbtdg) (running [on web](http://localhost:8080/gbtdg/))
+
 ## local
 
-If you want to load all the same stuff on a debian/ubuntu machine, locally (not in docker) it will run much faster, and be integrated better with your system. Have a look at the Dockerfile to see what steps that need to be completed. Basically, just run every line that starts with `RUN` and add all the env-vars to your `~/.bashrc`, like this:
+If you want to load all the same stuff on a debian/ubuntu machine, locally (not in docker) it will run a bit faster, and be integrated better with your system. Have a look at the Dockerfile to see what steps that need to be completed. Basically, just run every line that starts with `RUN` and add all the env-vars to your `~/.bashrc`, like this:
 
 ```sh
 export WINEPREFIX=$HOME/wine
@@ -58,11 +69,12 @@ export WINEARCH=win32
 export WINEDEBUG=-all
 export GBDK_DIR=/opt/gbdk
 export RGBDS_DIR=/opt/rgbds
+export SDCCDIR=/usr
 ```
 
 
 ## TODO
 
-* add [BGB/no$gmb rgbds debug snippet](https://arvid.io/2016/03/12/debug-messages-in-no-gmb-and-bgb/) to makefile
+* add [BGB/no$gmb rgbds debug snippet](https://arvid.io/2016/03/12/debug-messages-in-no-gmb-and-bgb/) to example makefile
 * make demo project
 * make a tutorial with demo project
