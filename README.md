@@ -21,7 +21,7 @@ Some useful things to do:
 
 ```sh
 # run text-mode bash inside container
-docker exec -it konsumer/gb bash
+docker exec -it gb bash
 
 ## inside container
 
