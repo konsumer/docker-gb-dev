@@ -8,9 +8,11 @@ OBJS = demo.o
 
 all: $(BIN)
 
+%.s: %.ms
+	maccer -o $@ $<
+
 $(BIN): $(OBJS)
 	$(CC) -o $(BIN) $(OBJS)
 
 clean:
-	rm -rf $(BIN) $(OBJS) *~
-
+	rm -rf $(BIN) $(OBJS) *~ *.map *.sym *.lst
