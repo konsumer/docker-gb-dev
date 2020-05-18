@@ -62,5 +62,4 @@ Here are the tools installed in your environment:
 
 ## TODO
 
-* add [BGB/no$gmb rgbds debug snippet](https://arvid.io/2016/03/12/debug-messages-in-no-gmb-and-bgb/) to example makefile
 * make a tutorial with demo project
