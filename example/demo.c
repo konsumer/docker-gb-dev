@@ -1,13 +1,7 @@
-#include <stdio.h>
 #include <gb/gb.h>
-#include <gb/console.h>
-
-// clear the screen
-void cls (void) NONBANKED;
+#include <gb/drawing.h>
 
 void main () {
-    DISPLAY_ON;
-    cls();
-    gotoxy(14, 8);
-    printf("O HAI!");
+    gotogxy(7, 8);
+    gprintf("O HAI!");
 }

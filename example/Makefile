@@ -1,15 +1,16 @@
-BIN=/opt/gbdk/bin
-RGBASM=/opt/rgbds/rgbasm
-OBJ=./obj
+ 
+LCC=/opt/gbdk/bin/lcc
+AS = $(LCC) -c
+CC = $(LCC) -Wa-l -Wl-m
 
-build:
-	mkdir -p $(OBJ)
-	$(BIN)/gbdk-n-compile.sh demo.c -o $(OBJ)/demo.rel
-	$(RGBASM) debug.asm -o $(OBJ)/debug.o
-	$(BIN)/gbdk-n-link.sh $(OBJ)/demo.rel $(OBJ)/debug.o -o $(OBJ)/demo.ihx
-	$(BIN)/gbdk-n-make-rom.sh $(OBJ)/demo.ihx demo.gb
+BIN = demo.gb
+OBJS = demo.o
+
+all: $(BIN)
+
+$(BIN): $(OBJS)
+	$(CC) -o $(BIN) $(OBJS)
 
 clean:
-	rm -rf $(OBJ)
-	rm -f demo.gb
+	rm -rf $(BIN) $(OBJS) *~
 

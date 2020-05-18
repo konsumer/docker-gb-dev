@@ -5,13 +5,13 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV LC_ALL C.UTF-8
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
-ENV SDCCDIR=/usr
+ENV SDCCDIR=/opt/sdcc
 
 RUN dpkg --add-architecture i386 && \
-  apt-get update && apt-get -y install gnupg2 wget && \
+  apt-get update && apt-get -y install gnupg2 wget libboost-dev && \
   wget -O - https://dl.winehq.org/wine-builds/winehq.key | apt-key add - && \
   echo 'deb https://dl.winehq.org/wine-builds/ubuntu/ xenial main' |tee /etc/apt/sources.list.d/winehq.list && \
-  apt-get update && apt-get -y install sdcc winehq-stable zenity libncurses5 unzip git build-essential byacc bison \
+  apt-get update && apt-get -y install winehq-stable zenity libncurses5 unzip git build-essential byacc bison \
     flex pkg-config gawk libpng-dev xvfb x11vnc xdotool tar supervisor net-tools fluxbox && \
   mkdir /opt/wine-stable/share/wine/mono && wget -O - https://dl.winehq.org/wine/wine-mono/4.9.4/wine-mono-bin-4.9.4.tar.gz |tar -xzv -C /opt/wine-stable/share/wine/mono && \
   mkdir /opt/wine-stable/share/wine/gecko && wget -O /opt/wine-stable/share/wine/gecko/wine-gecko-2.47.1-x86.msi https://dl.winehq.org/wine/wine-gecko/2.47.1/wine-gecko-2.47.1-x86.msi && \
@@ -25,10 +25,9 @@ RUN dpkg --add-architecture i386 && \
   cd /opt/gbtd && wget http://www.devrs.com/gb/hmgd/gbtd22.zip && unzip gbtd22.zip && rm gbtd22.zip && \
   cd /opt/gbmb && wget http://www.devrs.com/gb/hmgd/gbmb18.zip && unzip gbmb18.zip && rm gbmb18.zip && \
   cd /opt/bgb && wget http://bgb.bircd.org/bgb.zip && unzip bgb.zip && rm bgb.zip && \
-  cd  && git clone https://github.com/chrisantonellis/gbtdg.git /opt/novnc/gbtdg
-
-# this currently copies all of /usr/bin, ala https://github.com/Zal0/gbdk-2020/issues/10
-# git clone https://github.com/Zal0/gbdk-2020.git /opt/gbdk && cd /opt/gbdk && make && make install
+  git clone https://github.com/chrisantonellis/gbtdg.git /opt/novnc/gbtdg && \
+  cd /opt && wget -O sdcc.tbz "https://downloads.sourceforge.net/project/sdcc/snapshot_builds/amd64-unknown-linux2.5/sdcc-snapshot-amd64-unknown-linux2.5-20200517-11615.tar.bz2?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fsdcc%2Ffiles%2Fsnapshot_builds%2Famd64-unknown-linux2.5%2Fsdcc-snapshot-amd64-unknown-linux2.5-20200517-11615.tar.bz2%2Fdownload&ts=1589825291&use_mirror=autoselect" && tar xjf sdcc.tbz && rm sdcc.tbz && \
+  git clone https://github.com/Zal0/gbdk-2020.git /opt/gbdk && cd /opt/gbdk && make && make install
 
 # TODO install js/wasm-based tools?
 
