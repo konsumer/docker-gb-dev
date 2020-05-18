@@ -21,7 +21,7 @@ Some useful things to do:
 
 ```sh
 # run text-mode bash inside container
-docker exec -it gb bash
+docker exec -it konsumer/gb bash
 
 ## inside container
 
@@ -41,7 +41,7 @@ If you want to try it out, put the `example/` dir in your work folder, and run t
 
 ```sh
 docker run --name='gb' -d --rm -p 8080:8080 -v "${PWD}/work:/home/gbdev" konsumer/gb
-docker exec -it gb bash
+docker exec -it konsumer/gb bash
 cd example
 make
 wine /opt/bgb/bgb.exe demo.gb
@@ -59,22 +59,8 @@ Here are the tools installed in your environment:
 - [bgb gameboy emulator](https://bgb.bircd.org/) (via wine)
 - [gameboy tile data generator](https://github.com/chrisantonellis/gbtdg) (running [on web](http://localhost:8080/gbtdg/))
 
-## local
-
-If you want to load all the same stuff on a debian/ubuntu machine, locally (not in docker) it will run a bit faster, and be integrated better with your system. Have a look at the Dockerfile to see what steps that need to be completed. Basically, just run every line that starts with `RUN` and add all the env-vars to your `~/.bashrc`, like this:
-
-```sh
-export WINEPREFIX=$HOME/wine
-export WINEARCH=win32
-export WINEDEBUG=-all
-export GBDK_DIR=/opt/gbdk
-export RGBDS_DIR=/opt/rgbds
-export SDCCDIR=/usr
-```
-
 
 ## TODO
 
 * add [BGB/no$gmb rgbds debug snippet](https://arvid.io/2016/03/12/debug-messages-in-no-gmb-and-bgb/) to example makefile
-* make demo project
 * make a tutorial with demo project
